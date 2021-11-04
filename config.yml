@@ -1,0 +1,24 @@
+
+analytics:
+  host: https://172.31.255.130:8143
+  base_url: /analytics/uves
+
+prometheus:
+  port: 8080
+  metric_name_prefix: "tungsten"
+
+logging:
+  level: INFO
+
+scraper:
+  max_retry: 3      # number of retries when an http call fails
+  timeout: 1        # http timeout in seconds
+  pool_size: 10     # maximum number of concurrent http calls
+  interval: 60      # wait time in seconds between scrapes
+  
+metrics:
+  - name: vrouter_drop_stats
+    type: Gauge
+    uve_type: vrouter
+    uve_module: VrouterStatsAgent
+    json_path: drop_stats.*
